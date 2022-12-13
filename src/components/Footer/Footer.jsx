@@ -14,7 +14,10 @@ const Footer = () => {
         </p>
         <p>
           Get the source code on{" "}
-          <a href="https://ivan-rodrigues.com" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/Ivanho92/react-tic-tac-toe"
+            target="_blank"
+            rel="noreferrer">
             Github
           </a>
         </p>
