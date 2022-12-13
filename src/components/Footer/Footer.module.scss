@@ -18,9 +18,12 @@
 
     &:hover,
     &:focus {
-      outline: 3px solid #fff;
       color: lighten($lightColor, 30);
       text-decoration: none;
+    }
+
+    &:focus {
+      outline: 3px solid #fff;
     }
   }
 }

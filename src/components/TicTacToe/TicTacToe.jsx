@@ -120,28 +120,53 @@ const TicTacToe = () => {
         ));
   }
 
+  const renderSquares = (rows = 3, columns = 3) => {
+    const squaresToRender = [];
+
+    console.log("renderSquares");
+    // Looping through rows (A,B,C,...)
+    for (let i = 0; i < rows; i++) {
+      const rowID = (i + 10).toString(36).toUpperCase();
+
+      // Looping through columns (1,2,3,...)
+      const squaresInRow = [];
+      for (let j = 0; j < columns; j++) {
+        const columnID = j + 1;
+        const squareID = rowID + columnID;
+        squaresInRow.push(
+          <Square
+            key={squareID}
+            id={squareID}
+            value={squares[squareID]}
+            onClick={squareClickHandler}
+          />,
+        );
+      }
+
+      const rowToRender = (
+        <div
+          key={`row-${rowID}`}
+          id={`row-${rowID}`}
+          className={styles.row}
+          style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(${columns}, minmax(50px, 1fr))`,
+          }}>
+          {squaresInRow}
+        </div>
+      );
+      squaresToRender.push(rowToRender);
+    }
+
+    console.log(squaresToRender);
+    return squaresToRender;
+  };
+
   return (
     <Stack>
       <div>
         <p className={styles.info}>{renderedGameStatus}</p>
-        <div className={styles.board}>
-          {/* TODO: loop? */}
-          <div id="row-A" className={styles.row}>
-            <Square id="A1" value={squares.A1} onClick={squareClickHandler} />
-            <Square id="A2" value={squares.A2} onClick={squareClickHandler} />
-            <Square id="A3" value={squares.A3} onClick={squareClickHandler} />
-          </div>
-          <div id="row-B" className={styles.row}>
-            <Square id="B1" value={squares.B1} onClick={squareClickHandler} />
-            <Square id="B2" value={squares.B2} onClick={squareClickHandler} />
-            <Square id="B3" value={squares.B3} onClick={squareClickHandler} />
-          </div>
-          <div id="row-C" className={styles.row}>
-            <Square id="C1" value={squares.C1} onClick={squareClickHandler} />
-            <Square id="C2" value={squares.C2} onClick={squareClickHandler} />
-            <Square id="C3" value={squares.C3} onClick={squareClickHandler} />
-          </div>
-        </div>
+        <div className={styles.board}>{renderSquares(3, 3)}</div>
       </div>
       {winner && (
         <p className={styles.newGame}>
