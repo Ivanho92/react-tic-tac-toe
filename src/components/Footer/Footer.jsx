@@ -1,6 +1,6 @@
 import React from "react";
 
-import Wrapper from "../utils/Wrapper/Wrapper";
+import Wrapper from "../layout/Wrapper/Wrapper";
 
 import styles from "./Footer.module.scss";
 
@@ -10,13 +10,13 @@ const Footer = () => {
       <Wrapper>
         <p>
           By{" "}
-          <a href="https://ivan-rodrigues.com" target="_blank">
+          <a href="https://ivan-rodrigues.com" target="_blank" rel="noreferrer">
             Ivan Rodrigues
           </a>
         </p>
         <p>
           Get the source code on{" "}
-          <a href="https://ivan-rodrigues.com" target="_blank">
+          <a href="https://ivan-rodrigues.com" target="_blank" rel="noreferrer">
             Github
           </a>
         </p>

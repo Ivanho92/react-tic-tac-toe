@@ -2,8 +2,8 @@ import TicTacToe from "./components/TicTacToe/TicTacToe";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
-import Wrapper from "./components/utils/Wrapper/Wrapper";
-import Stack from "./components/utils/Stack/Stack";
+import Wrapper from "./components/layout/Wrapper/Wrapper";
+import Stack from "./components/layout/Stack/Stack";
 
 const App = () => {
   return (

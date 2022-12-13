@@ -1,6 +1,6 @@
 import React from "react";
 
-import Wrapper from "../utils/Wrapper/Wrapper";
+import Wrapper from "../layout/Wrapper/Wrapper";
 
 import styles from "./Header.module.scss";
 
