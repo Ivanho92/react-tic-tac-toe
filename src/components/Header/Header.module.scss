@@ -1,11 +1,7 @@
+@import "../../scss/variables.scss";
+
 .header {
-  margin-block-start: 1rem;
-
-  h1 {
-    cursor: pointer;
-
-    &:hover {
-      color: red;
-    }
-  }
+  color: $lightColor;
+  margin-block-start: 0.5rem;
+  font-size: 1.5em;
 }

@@ -1,0 +1,27 @@
+@import "../../scss/variables.scss";
+
+.square {
+  color: $primaryColor;
+  background-color: $lightColor;
+  border: clamp(1px, 0.6vw, 3px) solid $primaryColor;
+  padding: 0;
+
+  aspect-ratio: 1;
+  font-size: clamp(3em, 15vw, 6.75em);
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($lightColor, 7.5);
+  }
+
+  &:focus {
+    background-color: lighten($lightColor, 25);
+  }
+}

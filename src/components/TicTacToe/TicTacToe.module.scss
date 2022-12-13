@@ -1,0 +1,10 @@
+@import "../../scss/variables.scss";
+
+.board {
+  border: 3px solid $lightColor;
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
+  }
+}

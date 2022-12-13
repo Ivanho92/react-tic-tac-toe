@@ -1,7 +1,25 @@
 @import "../../scss/variables.scss";
 
 .footer {
-  margin-block-start: auto;
-  background-color: $grayColor;
-  padding-block: 1rem;
+  padding-block: 2.5rem;
+
+  border-top: 3px solid $lightColor;
+  background-color: $primaryColor;
+  color: $lightColor;
+  font-size: 1.1em;
+
+  a {
+    font-size: 1.2em;
+    font-weight: 600;
+    text-decoration: underline;
+    color: inherit;
+
+    outline: none;
+
+    &:hover,
+    &:focus {
+      color: lighten($lightColor, 30);
+      text-decoration: none;
+    }
+  }
 }
