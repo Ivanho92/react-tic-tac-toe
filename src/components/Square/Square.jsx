@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "./Square.module.scss";
 
 const Field = ({ id, value, onClick }) => {

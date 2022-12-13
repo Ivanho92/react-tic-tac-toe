@@ -14,18 +14,17 @@
   justify-content: center;
   align-items: center;
 
-  outline: none;
+  // outline: none;
 
   &:hover {
     cursor: pointer;
-    background-color: lighten($lightColor, 7.5);
+    background-color: darken($lightColor, 3);
+    // background-color: lighten($primaryColor-300, 30);
   }
 
-  &:focus {
-    background-color: lighten($lightColor, 25);
-  }
-
-  &:active {
-    background-color: lighten($lightColor, 7.5);
+  &:focus-visible {
+    border: 5px solid #000;
+    border-radius: 5px;
+    z-index: 1;
   }
 }

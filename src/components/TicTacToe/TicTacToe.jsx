@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-
 import Square from "../Square/Square";
-
 import Button from "../ui/Button/Button";
-
 import Stack from "../layout/Stack/Stack";
-
 import styles from "./TicTacToe.module.scss";
 
 const SQUARES = {
@@ -77,69 +73,59 @@ const TicTacToe = () => {
   const [nextPlayer, setNextPlayer] = useState(SQUARES.X);
   const [squares, setSquares] = useState(defaultSquares);
   const [winner, setWinner] = useState(null);
-  const [newGame, setNewGame] = useState(false);
 
   const squareClickHandler = (id) => {
-    if (squares[id] !== null) {
+    if (squares[id] !== null || winner !== null) {
       return;
     }
 
-    console.log(nextPlayer + " played on square " + id);
     setSquares((prevSquares) => ({ ...prevSquares, [id]: nextPlayer }));
+    setNextPlayer((prevPlayer) =>
+      prevPlayer === SQUARES.X ? SQUARES.O : SQUARES.X,
+    );
   };
 
   const resetGameHandler = () => {
     setSquares(defaultSquares);
-    setNewGame(true);
     setWinner(null);
     setNextPlayer(SQUARES.X);
   };
 
-  // Check win conditions
   useEffect(() => {
-    // console.log("useEffect...");
-
+    // Check win conditions when game board is updated
     const winner = checkIfWinner(squares);
     if (winner) {
-      // console.log(winner + " wins!");
       setWinner(winner);
       return;
     }
 
     const draw = checkIfDraw(squares);
     if (draw) {
-      // console.log("It's a draw!");
       setWinner(draw);
       return;
     }
-
-    // console.log("No win or draw, game continues");
-    if (!newGame) {
-      setNextPlayer((prevPlayer) =>
-        prevPlayer === SQUARES.X ? SQUARES.O : SQUARES.X,
-      );
-    } else {
-      setNewGame(false);
-    }
   }, [squares]);
 
-  let renderedInfo = (
+  let renderedGameStatus = (
     <span>
       Next player: <span className={styles.highlight}>{nextPlayer}</span>
     </span>
   );
-  if (winner && winner !== "draw") {
-    renderedInfo = <span className={styles.highlight}>{winner} wins!</span>;
-  }
-  if (winner && winner === "draw") {
-    renderedInfo = <span className={styles.highlight}>It's a draw!</span>;
+
+  if (winner) {
+    winner === "draw"
+      ? (renderedGameStatus = <span className={styles.highlight}>It's a draw!</span>)
+      : (renderedGameStatus = (
+          <span className={styles.highlight}>{winner} wins!</span>
+        ));
   }
 
   return (
     <Stack>
       <div>
-        <p className={styles.info}>{renderedInfo}</p>
+        <p className={styles.info}>{renderedGameStatus}</p>
         <div className={styles.board}>
+          {/* TODO: loop? */}
           <div id="row-A" className={styles.row}>
             <Square id="A1" value={squares.A1} onClick={squareClickHandler} />
             <Square id="A2" value={squares.A2} onClick={squareClickHandler} />
@@ -159,7 +145,11 @@ const TicTacToe = () => {
       </div>
       {winner && (
         <p className={styles.newGame}>
-          <Button label="Start a new game" onClick={resetGameHandler} />
+          <Button
+            focusOnRender={true}
+            label="Start a new game"
+            onClick={resetGameHandler}
+          />
         </p>
       )}
     </Stack>

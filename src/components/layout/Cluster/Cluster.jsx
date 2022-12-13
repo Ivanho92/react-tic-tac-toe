@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "./Cluster.module.scss";
 
 const Cluster = ({ children, gap }) => {

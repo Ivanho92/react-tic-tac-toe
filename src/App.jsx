@@ -1,7 +1,7 @@
+import React from "react";
 import TicTacToe from "./components/TicTacToe/TicTacToe";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-
 import Wrapper from "./components/layout/Wrapper/Wrapper";
 import Stack from "./components/layout/Stack/Stack";
 

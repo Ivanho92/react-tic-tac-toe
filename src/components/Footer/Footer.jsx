@@ -1,7 +1,5 @@
 import React from "react";
-
 import Wrapper from "../layout/Wrapper/Wrapper";
-
 import styles from "./Footer.module.scss";
 
 const Footer = () => {

@@ -1,8 +1,15 @@
 import React from "react";
-
 import styles from "./Button.module.scss";
 
-const Button = ({ label, onClick, disabled, variant, size, type }) => {
+const Button = ({
+  label,
+  onClick,
+  disabled,
+  variant,
+  size,
+  type,
+  focusOnRender,
+}) => {
   const defaultOnClick = () => {
     console.warn("No onClick props defined!");
   };
@@ -15,10 +22,10 @@ const Button = ({ label, onClick, disabled, variant, size, type }) => {
       className={`${styles.btn} ${btnColorVariant} ${btnSize}`}
       onClick={onClick || defaultOnClick}
       disabled={disabled}
-      type={type}>
+      type={type}
+      autoFocus={focusOnRender}>
       {label || "No label"}
     </button>
   );
 };
-
 export default Button;

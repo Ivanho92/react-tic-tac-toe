@@ -15,22 +15,22 @@
 
   &:disabled {
     cursor: not-allowed;
-    background-color: $disabledBgColor;
-    color: $disabledTextColor;
+    background-color: rgb(230, 230, 230);
+    color: rgb(203, 203, 203);
 
     &:hover {
-      background-color: $disabledBgColor;
-      color: $disabledTextColor;
+      background-color: rgb(230, 230, 230);
+      color: rgb(203, 203, 203);
     }
   }
 }
 
 .btn-primary {
-  background-color: darken($primaryColor, 18);
+  background-color: $primaryColor-600;
   color: $lightColor;
 
   &:hover,
   &:focus {
-    color: lighten($lightColor, 30);
+    outline: 3px solid $lightColor;
   }
 }
