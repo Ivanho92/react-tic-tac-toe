@@ -1,0 +1,42 @@
+@import "../../../scss/variables.scss";
+
+.btn {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $disabledBgColor;
+    color: $disabledTextColor;
+
+    &:hover {
+      background-color: $disabledBgColor;
+      color: $disabledTextColor;
+    }
+  }
+
+  &-sm {
+    font-size: 0.9em;
+  }
+
+  border: none;
+  border-radius: $btnBorderRadius;
+  padding: 0.4rem 0.8rem;
+}
+
+.btn-primary {
+  background-color: $primaryColor;
+  color: $lightColor;
+
+  &:hover {
+    background-color: darken($primaryColor, 3);
+  }
+}
+
+.btn-danger {
+  background-color: $dangerColor;
+  color: $lightColor;
+
+  &:hover {
+    background-color: darken($dangerColor, 3);
+  }
+}

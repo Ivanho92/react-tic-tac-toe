@@ -1,0 +1,7 @@
+@import "../../../scss/variables.scss";
+
+.container {
+  width: 90%;
+  max-width: $containerSize;
+  margin-inline: auto;
+}

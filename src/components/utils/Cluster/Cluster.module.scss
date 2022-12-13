@@ -1,0 +1,13 @@
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  &-sm {
+    gap: 0.5rem;
+  }
+
+  &-lg {
+    gap: 1.5rem;
+  }
+}
