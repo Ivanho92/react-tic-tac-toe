@@ -1,9 +1,21 @@
+import TicTacToe from "./components/TicTacToe/TicTacToe";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+
+import Wrapper from "./components/utils/Wrapper/Wrapper";
+
 const App = () => {
   return (
-    <div className="App">
-      <header>
-        <h1>React TicTacToe</h1>
-      </header>
+    <div className="app">
+      <div>
+        <Header />
+        <main>
+          <Wrapper>
+            <TicTacToe />
+          </Wrapper>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 };

@@ -1,0 +1,11 @@
+.header {
+  margin-block-start: 1rem;
+
+  h1 {
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
+}
