@@ -3,7 +3,7 @@
 .square {
   color: $primaryColor;
   background-color: $lightColor;
-  border: clamp(1px, 0.6vw, 3px) solid $primaryColor;
+  border: clamp(1px, 0.6vw, 5px) solid $primaryColor;
   padding: 0;
 
   aspect-ratio: 1;

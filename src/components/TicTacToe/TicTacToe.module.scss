@@ -1,10 +1,21 @@
 @import "../../scss/variables.scss";
 
 .board {
-  border: 3px solid $lightColor;
+  // border: 4px solid $lightColor;
 
   .row {
     display: grid;
     grid-template-columns: repeat(3, minmax(50px, 1fr));
+  }
+}
+
+.info {
+  font-size: 1.6em;
+  color: $lightColor;
+  text-align: right;
+
+  .nextPlayer {
+    font-size: 1.1em;
+    font-weight: 700;
   }
 }
