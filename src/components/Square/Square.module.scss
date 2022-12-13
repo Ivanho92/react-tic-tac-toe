@@ -24,4 +24,8 @@
   &:focus {
     background-color: lighten($lightColor, 25);
   }
+
+  &:active {
+    background-color: lighten($lightColor, 7.5);
+  }
 }
