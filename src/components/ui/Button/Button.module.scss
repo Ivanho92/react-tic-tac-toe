@@ -26,11 +26,11 @@
 }
 
 .btn-primary {
-  background-color: darken($primaryColor, 25);
+  background-color: darken($primaryColor, 18);
   color: $lightColor;
 
   &:hover,
   &:focus {
-    background-color: darken($primaryColor, 18);
+    color: lighten($lightColor, 30);
   }
 }

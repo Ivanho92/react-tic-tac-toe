@@ -61,20 +61,23 @@ const checkIfWinner = (squares) => {
   return false;
 };
 
+const defaultSquares = {
+  A1: null,
+  A2: null,
+  A3: null,
+  B1: null,
+  B2: null,
+  B3: null,
+  C1: null,
+  C2: null,
+  C3: null,
+};
+
 const TicTacToe = () => {
   const [nextPlayer, setNextPlayer] = useState(SQUARES.X);
-  const [squares, setSquares] = useState({
-    A1: null,
-    A2: null,
-    A3: null,
-    B1: null,
-    B2: null,
-    B3: null,
-    C1: null,
-    C2: null,
-    C3: null,
-  });
+  const [squares, setSquares] = useState(defaultSquares);
   const [winner, setWinner] = useState(null);
+  const [newGame, setNewGame] = useState(false);
 
   const squareClickHandler = (id) => {
     if (squares[id] !== null) {
@@ -85,6 +88,14 @@ const TicTacToe = () => {
     setSquares((prevSquares) => ({ ...prevSquares, [id]: nextPlayer }));
   };
 
+  const resetGameHandler = () => {
+    setSquares(defaultSquares);
+    setNewGame(true);
+    setWinner(null);
+    setNextPlayer(SQUARES.X);
+  };
+
+  // Check win conditions
   useEffect(() => {
     // console.log("useEffect...");
 
@@ -103,9 +114,13 @@ const TicTacToe = () => {
     }
 
     // console.log("No win or draw, game continues");
-    setNextPlayer((prevPlayer) =>
-      prevPlayer === SQUARES.X ? SQUARES.O : SQUARES.X,
-    );
+    if (!newGame) {
+      setNextPlayer((prevPlayer) =>
+        prevPlayer === SQUARES.X ? SQUARES.O : SQUARES.X,
+      );
+    } else {
+      setNewGame(false);
+    }
   }, [squares]);
 
   let renderedInfo = (
@@ -144,7 +159,7 @@ const TicTacToe = () => {
       </div>
       {winner && (
         <p className={styles.newGame}>
-          <Button label="Start a new game" />
+          <Button label="Start a new game" onClick={resetGameHandler} />
         </p>
       )}
     </Stack>
