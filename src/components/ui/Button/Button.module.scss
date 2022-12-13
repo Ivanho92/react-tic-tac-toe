@@ -2,6 +2,16 @@
 
 .btn {
   cursor: pointer;
+  outline: none;
+
+  font-weight: 700;
+  border: none;
+  border-radius: $btnBorderRadius;
+  padding: 0.6rem 1rem;
+
+  &-sm {
+    font-size: 0.9em;
+  }
 
   &:disabled {
     cursor: not-allowed;
@@ -13,30 +23,14 @@
       color: $disabledTextColor;
     }
   }
-
-  &-sm {
-    font-size: 0.9em;
-  }
-
-  border: none;
-  border-radius: $btnBorderRadius;
-  padding: 0.4rem 0.8rem;
 }
 
 .btn-primary {
-  background-color: $primaryColor;
+  background-color: darken($primaryColor, 25);
   color: $lightColor;
 
-  &:hover {
-    background-color: darken($primaryColor, 3);
-  }
-}
-
-.btn-danger {
-  background-color: $dangerColor;
-  color: $lightColor;
-
-  &:hover {
-    background-color: darken($dangerColor, 3);
+  &:hover,
+  &:focus {
+    background-color: darken($primaryColor, 18);
   }
 }

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import Square from "../Square/Square";
 
+import Button from "../ui/Button/Button";
+
 import Stack from "../layout/Stack/Stack";
 
 import styles from "./TicTacToe.module.scss";
@@ -26,6 +28,14 @@ const WINNING_COMBINATIONS = [
   ["A1", "B2", "C3"],
   ["A3", "B2", "C1"],
 ];
+
+const checkIfDraw = (squares) => {
+  if (!Object.values(squares).includes(null)) {
+    return "draw";
+  }
+
+  return null;
+};
 
 const checkIfWinner = (squares) => {
   // Gather all plays of X and O
@@ -57,14 +67,14 @@ const TicTacToe = () => {
     A1: null,
     A2: null,
     A3: null,
-    B1: SQUARES.X,
-    B2: SQUARES.O,
+    B1: null,
+    B2: null,
     B3: null,
     C1: null,
     C2: null,
     C3: null,
   });
-  const [winner, setWinner] = useState();
+  const [winner, setWinner] = useState(null);
 
   const squareClickHandler = (id) => {
     if (squares[id] !== null) {
@@ -76,47 +86,67 @@ const TicTacToe = () => {
   };
 
   useEffect(() => {
+    // console.log("useEffect...");
+
     const winner = checkIfWinner(squares);
     if (winner) {
-      console.log(winner + " wins!");
+      // console.log(winner + " wins!");
       setWinner(winner);
       return;
     }
 
+    const draw = checkIfDraw(squares);
+    if (draw) {
+      // console.log("It's a draw!");
+      setWinner(draw);
+      return;
+    }
+
+    // console.log("No win or draw, game continues");
     setNextPlayer((prevPlayer) =>
       prevPlayer === SQUARES.X ? SQUARES.O : SQUARES.X,
     );
   }, [squares]);
 
-  const renderedInfo =
-    winner && winner !== "draw" ? (
-      <span className={styles.highlight}>{winner} wins!</span>
-    ) : (
-      <span>
-        Next player: <span className={styles.highlight}>{nextPlayer}</span>
-      </span>
-    );
+  let renderedInfo = (
+    <span>
+      Next player: <span className={styles.highlight}>{nextPlayer}</span>
+    </span>
+  );
+  if (winner && winner !== "draw") {
+    renderedInfo = <span className={styles.highlight}>{winner} wins!</span>;
+  }
+  if (winner && winner === "draw") {
+    renderedInfo = <span className={styles.highlight}>It's a draw!</span>;
+  }
 
   return (
-    <Stack gap="sm">
-      <p className={styles.info}>{renderedInfo}</p>
-      <div className={styles.board}>
-        <div id="row-A" className={styles.row}>
-          <Square id="A1" value={squares.A1} onClick={squareClickHandler} />
-          <Square id="A2" value={squares.A2} onClick={squareClickHandler} />
-          <Square id="A3" value={squares.A3} onClick={squareClickHandler} />
-        </div>
-        <div id="row-B" className={styles.row}>
-          <Square id="B1" value={squares.B1} onClick={squareClickHandler} />
-          <Square id="B2" value={squares.B2} onClick={squareClickHandler} />
-          <Square id="B3" value={squares.B3} onClick={squareClickHandler} />
-        </div>
-        <div id="row-C" className={styles.row}>
-          <Square id="C1" value={squares.C1} onClick={squareClickHandler} />
-          <Square id="C2" value={squares.C2} onClick={squareClickHandler} />
-          <Square id="C3" value={squares.C3} onClick={squareClickHandler} />
+    <Stack>
+      <div>
+        <p className={styles.info}>{renderedInfo}</p>
+        <div className={styles.board}>
+          <div id="row-A" className={styles.row}>
+            <Square id="A1" value={squares.A1} onClick={squareClickHandler} />
+            <Square id="A2" value={squares.A2} onClick={squareClickHandler} />
+            <Square id="A3" value={squares.A3} onClick={squareClickHandler} />
+          </div>
+          <div id="row-B" className={styles.row}>
+            <Square id="B1" value={squares.B1} onClick={squareClickHandler} />
+            <Square id="B2" value={squares.B2} onClick={squareClickHandler} />
+            <Square id="B3" value={squares.B3} onClick={squareClickHandler} />
+          </div>
+          <div id="row-C" className={styles.row}>
+            <Square id="C1" value={squares.C1} onClick={squareClickHandler} />
+            <Square id="C2" value={squares.C2} onClick={squareClickHandler} />
+            <Square id="C3" value={squares.C3} onClick={squareClickHandler} />
+          </div>
         </div>
       </div>
+      {winner && (
+        <p className={styles.newGame}>
+          <Button label="Start a new game" />
+        </p>
+      )}
     </Stack>
   );
 };
