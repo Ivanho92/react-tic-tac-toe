@@ -123,7 +123,6 @@ const TicTacToe = () => {
   const renderSquares = (rows = 3, columns = 3) => {
     const squaresToRender = [];
 
-    console.log("renderSquares");
     // Looping through rows (A,B,C,...)
     for (let i = 0; i < rows; i++) {
       const rowID = (i + 10).toString(36).toUpperCase();
@@ -158,15 +157,16 @@ const TicTacToe = () => {
       squaresToRender.push(rowToRender);
     }
 
-    console.log(squaresToRender);
     return squaresToRender;
   };
 
   return (
     <Stack>
       <div>
-        <p className={styles.info}>{renderedGameStatus}</p>
-        <div className={styles.board}>{renderSquares(3, 3)}</div>
+        <p className={styles.info} id="game-status">
+          {renderedGameStatus}
+        </p>
+        <div className={styles.board}>{renderSquares()}</div>
       </div>
       {winner && (
         <p className={styles.newGame}>
